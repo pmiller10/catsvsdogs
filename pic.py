@@ -4,7 +4,8 @@ from PIL import Image
 import numpy
 from copy import copy
 
-directory = "./data/train"
+#directory = "./data/train"
+directory = "./test" # TODO don't hardcode this
 
 class Pic:
 

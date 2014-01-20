@@ -9,7 +9,7 @@ class Resize:
 
     @classmethod
     def resize(cls, pic):
-        width, height = pic.size[0]/2, pic.size[1]/2
+        width, height = 38, 60
         return pic.resize((width, height), Image.ANTIALIAS)
 
     @classmethod
@@ -30,8 +30,6 @@ class Resize:
     def crop_to_avg_proportion(cls, limit):
         directory = "./data/train"
         _, _, _, _, avg_height, avg_width = Pic.size_ranges(limit)
-        #avg_height = int(avg_height)
-        #avg_width = int(avg_width)
         avg_proportion = avg_height/avg_width
         pics = []
         names = []
@@ -71,12 +69,12 @@ def apply_to_all(new_directory, method, limit=None):
 
 if __name__ == "__main__":
     #apply_to_all('./test', 'crop_to_avg_proportion', limit=10)
-    #_, _, _, _, avg_height, avg_width = Pic.size_ranges(2000)
-    #print avg_height, avg_width
-    pics, names = Resize.crop_to_avg_proportion(10)
+    #print Pic.size_ranges(2000)
+    pics, names = Resize.crop_to_avg_proportion(100)
     new_directory = './test'
     for i,pic in enumerate(pics):
         name = names[i]
         filename = new_directory + name
-        print filename
+        pic = Resize.resize(pic)
+        pic = Resize.band(pic)
         pic.save(filename)
