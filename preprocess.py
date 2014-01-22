@@ -70,8 +70,8 @@ def apply_to_all(new_directory, method, limit=None):
 if __name__ == "__main__":
     #apply_to_all('./test', 'crop_to_avg_proportion', limit=10)
     #print Pic.size_ranges(2000)
-    pics, names = Resize.crop_to_avg_proportion(100)
-    new_directory = './test'
+    pics, names = Resize.crop_to_avg_proportion(800)
+    new_directory = './crop_band'
     for i,pic in enumerate(pics):
         name = names[i]
         filename = new_directory + name

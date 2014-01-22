@@ -5,10 +5,21 @@ import numpy
 from copy import copy
 
 #directory = "./data/train"
-directory = "./test" # TODO don't hardcode this
+directory = "./crop_band" # TODO don't hardcode this
 
 class Pic:
 
+    @classmethod
+    def images(self, limit=None):
+        pics = []
+        targets = []
+        for image in os.listdir(directory)[:limit]:
+            # get the image
+            filepath = directory + "/" + image
+            pic = Image.open(filepath)
+            pics.append(pic)
+        return pics
+        
     @classmethod
     def data(self, limit=None):
         pics = []
